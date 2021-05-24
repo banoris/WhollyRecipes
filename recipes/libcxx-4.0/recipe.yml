@@ -15,21 +15,21 @@ dependencies:
 
 # Source
 source:
-  tar.gz: http://releases.llvm.org/{pkg_ver}/{pkg_name}-{pkg_ver}.src.tar.xz
+  tar.gz: https://releases.llvm.org/{pkg_ver}/{pkg_name}-{pkg_ver}.src.tar.xz
 
 resources:
   - libcxx_check_musl_libc_max_align.patch
 
 # Prepare stage
 prepare:
-  - apk add cmake
+  - apk add cmake patch
 
 # Build stage
 build:
   # Download required sources
-  - curl "http://releases.llvm.org/{pkg_ver}/llvm-{pkg_ver}.src.tar.xz" -o llvm.tar.xz &&
-    curl "http://releases.llvm.org/{pkg_ver}/libunwind-{pkg_ver}.src.tar.xz" -o libunwind.tar.xz &&
-    curl "http://releases.llvm.org/{pkg_ver}/libcxxabi-{pkg_ver}.src.tar.xz" -o libcxxabi.tar.xz &&
+  - curl "https://releases.llvm.org/{pkg_ver}/llvm-{pkg_ver}.src.tar.xz" -o llvm.tar.xz &&
+    curl "https://releases.llvm.org/{pkg_ver}/libunwind-{pkg_ver}.src.tar.xz" -o libunwind.tar.xz &&
+    curl "https://releases.llvm.org/{pkg_ver}/libcxxabi-{pkg_ver}.src.tar.xz" -o libcxxabi.tar.xz &&
     mkdir llvm && tar xf llvm.tar.xz -C llvm --strip-components 1 &&
     mkdir libcxxabi && tar xf libcxxabi.tar.xz -C libcxxabi --strip-components 1 &&
     mkdir libunwind && tar xf libunwind.tar.xz -C libunwind --strip-components 1

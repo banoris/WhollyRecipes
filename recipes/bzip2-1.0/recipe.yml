@@ -10,9 +10,13 @@ dependencies:
     - headers
     - libs
 
+prepare:
+  - apk add tar gzip
+
 # Source
 source:
-  tar.gz: http://www.bzip.org/{pkg_ver}/{pkg_name}-{pkg_ver}.tar.gz
+  # tar.gz: http://www.bzip.org/{pkg_ver}/{pkg_name}-{pkg_ver}.tar.gz
+  tar.gz: https://downloads.sourceforge.net/project/bzip2/bzip2-{pkg_ver}.tar.gz
 
 # Build stage
 build:

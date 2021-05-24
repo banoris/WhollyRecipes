@@ -49,7 +49,7 @@ source:
   tgz: https://www.python.org/ftp/{pkg_name}/{pkg_ver}/Python-{pkg_ver}.tgz
 
 prepare:
-  - apk add linux-headers
+  - apk add linux-headers musl-dev
 
 # Build stage
 build:
@@ -66,5 +66,6 @@ build:
   - cp ../Setup.local Modules
   - sed -i 's/\#include "datetime.h"/\#ifdef Py_BUILD_CORE\n\#undef Py_BUILD_CORE\n\#include "datetime.h"\n\#define Py_BUILD_CORE\n\#else\n\#include "datetime.h"\n\#endif\n/' Modules/_testcapimodule.c
   - sed -i 's/\*=\*)\tDEFS="$line$NL$DEFS"; continue;;/[[:alpha:]]*=*) DEFS="$line$NL$DEFS"; continue;;/' Modules/makesetup
+  - sed -i '/#if defined(HAVE_GETRANDOM)/c\#if HAVE_SYS_RANDOM_H && (defined(HAVE_GETRANDOM) || defined(HAVE_GETENTROPY))' Python/random.c
   - make LDFLAGS="-static" LINKFORSHARED=" " -j{__NB_CORES__}
   - make install

@@ -13,7 +13,8 @@ dependencies:
 
 # Source
 source:
-  tar.bz2: https://superb-sea2.dl.sourceforge.net/project/{pkg_name}/{pkg_name}/{pkg_ver}/{pkg_name}-{pkg_ver}.tar.bz2
+    tar.bz2: https://github.com/libexpat/libexpat/releases/download/R_2_2_0/expat-{pkg_ver}.tar.bz2 
+    #tar.bz2: https://superb-sea2.dl.sourceforge.net/project/{pkg_name}/{pkg_name}/{pkg_ver}/{pkg_name}-{pkg_ver}.tar.bz2
 
 # Build stage
 build:
